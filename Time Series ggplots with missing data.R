@@ -19,10 +19,12 @@
                               ifelse(nchar(DOI$Day)==1, "-0", "-"), DOI$Day, sep="") )
   
   ## Creating Variable Description Data Frame to reference
-    Var_Desc <- data.frame(Ozone="Ozone (ppb)", Solar.R="Solar.R (lang)", Wind="Wind (mph)", Temp="Temperature (degrees F)", stringsAsFactors = FALSE)
-  
+    Var_Desc <- data.frame(Ozone="Ozone (ppb)", Solar.R="Solar.R (langley)",
+                           Wind="Wind (mph)", Temp="Temperature (farenheit)",
+                           stringsAsFactors = FALSE)
+
     
-    
+
 ########################################################################################################### 
 ##  GGPLOT CODE - Illustrates plotting time series to indicate missing data and how to format Date axis  ##          
 ########################################################################################################### 
