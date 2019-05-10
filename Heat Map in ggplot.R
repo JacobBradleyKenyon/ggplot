@@ -4,7 +4,7 @@
   Heat_Map <- function(Data=airquality[,1:4], InsertText=FALSE, LowGradient="#3182bd", HighGradient="#de2d26"){
   
   ## Converting Correlation of data from wide to long format
-    plot.data <- reshape2::melt(cor(na.omit(Data)))  ;  plot.data <- data.frame(plot.data, stringsAsFactors = F) ; colnames(plot.data)[3] <- "Correlation"
+    plot.data <- reshape2::melt(cor(na.omit(Data)))  ;  plot.data <- data.frame(plot.data, stringsAsFactors = FALSE) ; colnames(plot.data)[3] <- "Correlation"
         
   ## Gathering p-values associated with correlations to plot within heat map 
     V.seq <- matrix(seq(1:nrow(plot.data)))
@@ -18,13 +18,15 @@
    
   ## Using ggplot to create Heatmap of correlations
     # Initial ggplot layer
-plt<-ggplot(plot.data, aes(Var1, Var2)) +
+plt<-ggplot(plot.data, aes(Var1, rev(Var2))) +
       # Setting Title layer
       ggtitle("Heat Map: New York Air Quality Measurements in 1973")  +
         # Creating tiles according to value (i.e. correlation)
         geom_tile(aes(fill=Correlation)) +
           # Setting color gradient for heatmap
-          scale_fill_gradientn(colours=Colors, limits=c(-1,1), name="Correlation Key:   " ) 
+          scale_fill_gradientn(colours=Colors, limits=c(-1,1), name="Correlation Key:   " ) +
+            # Flipping y variable labels
+            scale_y_discrete(labels=rev(unique(plot.data$Var2))) 
     
     if(InsertText==TRUE){
 
