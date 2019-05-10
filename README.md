@@ -1,4 +1,4 @@
-# ggplot
+# A collection of ggplot2 code:
 Examples of the power of ggplot2 in R programming.
 
 # Time Series ggplots with missing data.R
