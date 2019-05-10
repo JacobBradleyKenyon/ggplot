@@ -19,7 +19,7 @@
                               ifelse(nchar(DOI$Day)==1, "-0", "-"), DOI$Day, sep="") )
   
   ## Creating Variable Description Data Frame to reference
-    Var_Desc <- data.frame(Ozone="Ozone (ppb)", Solar.R="Solar.R (langley)",
+    Var_Desc <- data.frame(Ozone="Ozone (ppb)", Solar.R="Solar Radiation (langley)",
                            Wind="Wind (mph)", Temp="Temperature (farenheit)",
                            stringsAsFactors = FALSE)
 
